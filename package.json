@@ -3,15 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start-api": "node ./components/api/index.js",
+    "start-worker": "node ./components/worker/index.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "amqplib": "^0.8.0",
+    "axios": "^0.26.1",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.9",
     "next": "12.1.4",
+    "node-fetch": "^2.6.7",
+    "nodemon": "^2.0.15",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "eslint": "8.12.0",
