@@ -1,8 +1,17 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import React from 'react';
+import { setComments } from '../components/api/sentim-api';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+  function onSubmit() {
+    if (process.browser) {
+      console.log(setComentarios(document.getElementById('inputCommet').nodeValue));
+    }
+    
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,22 +26,15 @@ export default function Home() {
           <p className={styles.title}>
             Indique el comentatio que desee enviar
           </p>
-          <input></input>
+          <input id='inputCommet' type='text'></input>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        <button onClick={()=>{
+          if (process.browser) {
+            setComments(document.getElementById('inputCommet').value).then(res => console.log(res));
+          }
+        }}>Enviar comentario</button>
+      </main>
     </div>
   )
 }

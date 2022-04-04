@@ -1,11 +1,11 @@
 const fetch = require('node-fetch');
 
-async function getPeliculas() {
+export async function setComments(comment) {
     const response = await fetch('https://sentim-api.herokuapp.com/api/v1/',
     {
         method: 'POST', 
         body: JSON.stringify({
-            text: "En mi opinión personal siento que aun no he utilizado muy bien la plataforma",
+            text: comment,
         }),
         headers: {
             "Content-type": "application/json"
@@ -15,4 +15,4 @@ async function getPeliculas() {
     return data;
 }
 
-getPeliculas().then(data => console.log(data))
+// getPeliculas().then(data => console.log(data))
