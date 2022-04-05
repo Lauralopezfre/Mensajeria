@@ -5,12 +5,22 @@ import styles from '../styles/Home.module.css'
 
 export default function Home() {
 
+  const [comments, setComment] = React.useState([]);
+
   function onSubmit() {
     if (process.browser) {
-      console.log(setComentarios(document.getElementById('inputCommet').nodeValue));
+      setComment([...comments, document.getElementById('inputCommet').value]);
+      document.getElementById('inputCommet').value = '';
     }
-    
   }
+
+  // const showCommets = async(c) => {
+  //   // if (process.browser) {
+  //     comments.forEach(comment => {
+  //       const dsjkf = await setComments(comment)
+  //     })
+  //   }
+  // // }
 
   return (
     <div className={styles.container}>
@@ -24,16 +34,32 @@ export default function Home() {
 
         <div className={styles.grid}>
           <p className={styles.title}>
-            Indique el comentatio que desee enviar
+            Indique el comentario que desee enviar
           </p>
           <input id='inputCommet' type='text'></input>
         </div>
 
-        <button onClick={()=>{
-          if (process.browser) {
-            setComments(document.getElementById('inputCommet').value).then(res => console.log(res));
-          }
+        <button id='buttonSend' onClick={()=>{
+          onSubmit();
         }}>Enviar comentario</button>
+
+        <button id='buttonResults' onClick={async()=>{
+          if (process.browser) {
+            comments.forEach(comment => {
+              setComments(comment).then(data => console.log(data));
+            })
+          }
+          
+          console.log(comments);
+        }}>Generar resultados</button>
+
+        <div style={
+          {
+            width: '80%',
+          }
+        }>
+          <a id='divResult'></a>
+        </div>
       </main>
     </div>
   )
